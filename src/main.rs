@@ -1,24 +1,24 @@
 #[derive(Debug)]
 
-enum ROLLSTAR {
+enum Roster {
     Onduty,
     Offduty,
     Sick,
     Vacation,
-    Official_Duty,
-    Unpaid_Leave,
+    OfficialDuty,
+    UnpaidLeave,
 }
 
-impl ROLLSTAR {
+impl Roster {
     fn check(&self) {
         match self {
-            ROLLSTAR::Onduty => println!("On duty"),
+            Roster::Onduty => println!("On duty"),
 
-            ROLLSTAR::Offduty | ROLLSTAR::Vacation => {
+            Roster::Offduty | Roster::Vacation => {
                 println!("Staff is not working at the moment");
             }
 
-            ROLLSTAR::Sick => {
+            Roster::Sick => {
                 println!("Staff is sick");
             }
 
@@ -28,7 +28,51 @@ impl ROLLSTAR {
         }
     }
 }
+
+#[derive(Debug)]
+enum Shoe{
+    Size(i32),
+    Brand(Brands)
+}
+
+#[derive(Debug)]
+enum Brands{
+    Nike,
+    Adidas,
+    Puma,
+    Reebok,
+}
+
+impl Shoe {
+    fn size(&self){
+        match self {
+            Shoe::Size(0..=39) =>{
+                println!("Them some small ass shoes boy")
+            },
+            Shoe::Brand(Brands::Nike) =>{
+                println!("Nike")
+            },
+            Shoe::Brand(Brands::Adidas) =>{
+                println!("Adidas")
+            },
+            Shoe::Brand(Brands::Puma) =>{
+                println!("Puma")
+            },
+            Shoe::Brand(Brands::Reebok) =>{
+                println!("Reebok")
+            },
+            Shoe::Size(size) =>{
+                println!("oooh {size}!!!!!!!, Them some big boy feet")
+            }
+        }
+    }
+}
+
 fn main() {
-    let status = ROLLSTAR::Unpaid_Leave;
+    let status = Roster::UnpaidLeave;
     status.check();
+
+    let shoe = Shoe::Size(29);
+    shoe.size();
+
 }
