@@ -1,29 +1,34 @@
-
 #[derive(Debug)]
 
-
-
-enum Heater{
-    On,
-    Off,
+enum ROLLSTAR {
+    Onduty,
+    Offduty,
+    Sick,
+    Vacation,
+    Official_Duty,
+    Unpaid_Leave,
 }
 
-impl Heater {
-    fn set_temp(self, temp:u8)->String{
-        match temp {
-            0..=20 => String::from ("cold"),
-            21..=40 => String::from ("warm"),
-            41..=60 => String::from ("lukewarm"),
-            61..=80 => String::from ("hot"),
-            81..=100 => String::from ("very-hot"),
-            _ => String::from ("unknown"),
+impl ROLLSTAR {
+    fn check(&self) {
+        match self {
+            ROLLSTAR::Onduty => println!("On duty"),
+
+            ROLLSTAR::Offduty | ROLLSTAR::Vacation => {
+                println!("Staff is not working at the moment");
+            }
+
+            ROLLSTAR::Sick => {
+                println!("Staff is sick");
+            }
+
+            _other_status => {
+                println!("Staff is {_other_status :?}")
+            }
         }
     }
-    fn temp(self, temp:u8){
-        let set_temp = self.set_temp(temp);
-        println!("the temprature is set to {}",set_temp);
-}}
-
+}
 fn main() {
-    let bath = Heater::On.temp(52);
+    let status = ROLLSTAR::Unpaid_Leave;
+    status.check();
 }
