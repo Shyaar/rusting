@@ -1,40 +1,12 @@
 
-#[derive(Debug)]
-enum Tier{
-    Gold,
-    Silver,
-    Platinum,
+
+fn main() {
+    println!("{}", user(2));
+    println!("{}", user(true));
+    println!("{}", user("John"));
+    println!("{}", user(String::from("Andrew")));
 }
 
-#[derive(Debug)]
-enum Subscription{
-    Free,
-    Basic(f64, u32),
-    Premium{tier: Tier}
-}
-
-impl Subscription{
-    fn summarize(&self){
-        match self{
-            Subscription::Free => println!("You have limited access to the site"),
-
-            Subscription::Basic(price, duration) => println!("You have limited access to the site's premium features for {price} for {duration} months"),
-
-            Subscription::Premium{tier} => println!("You have full access to the site's premium features. Your tier is {tier:?}"),
-        }
-    }
-}
-
-
-fn main(){
-    let free = Subscription::Free;
-    free.summarize();
-
-    let basic = Subscription::Basic(2_500.00, 4);
-    basic.summarize();
-
-    let premium = Subscription::Premium{tier: Tier::Platinum};
-    premium.summarize();
-
-    
+fn user<T>(name: T) -> T {
+    name
 }
