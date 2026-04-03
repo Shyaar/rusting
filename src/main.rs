@@ -1,12 +1,50 @@
+//school management system
 
+#[derive(Debug)]
 
-fn main() {
-    println!("{}", user::<i8>(2));
-    println!("{}", user::<bool>(true));
-    println!("{}", user::<&str>("John"));
-    println!("{}", user::<String>(String::from("Andrew")));
+enum Grades{
+    A,
+    B,
+    C,
+    D,
+    E,
+    F
 }
 
-fn user<T>(name: T) -> T {
-    name
+#[derive(Debug)]
+
+enum Courses{
+    English{score:u8, grade:Grades},
+    Maths{score:u8, grade:Grades},
+    Science{score:u8, grade:Grades},
+}
+
+
+#[derive(Debug)]
+struct Student {
+    id: u8,
+    name: String,
+    class: u8,
+    result: Courses
+}
+
+
+impl Student {
+    fn new(id: u8, name: String, class: u8, result: Courses) -> Student {
+        Self{
+            id,
+            name,
+            class,
+            result,
+        }
+    }
+
+    fn add_students
+}
+
+
+
+fn main(){
+let students: Vec<Students> = vec::new();
+
 }
