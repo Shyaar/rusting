@@ -1,6 +1,5 @@
 //school management system
 
-use std::{collections::VecDeque, result};
 
 #[derive(Debug)]
 
@@ -40,11 +39,11 @@ struct Student {
     id: u8,
     name: String,
     level: u8,
-    result: Courses,
+    result: Vec<Courses>,
 }
 
 impl Student {
-    fn new(id: u8, name: String, level: u8, result: Courses) -> Student {
+    fn new(id: u8, name: String, level: u8, result: Vec<Courses>) -> Student {
         Self {
             id,
             name,
@@ -55,20 +54,32 @@ impl Student {
 }
 
 fn main() {
-    
+    let mut students:Vec<Student> = vec![];
+    add_student(String::from("john"), 100, &mut students);
+
+    get_all_students(&mut students);
 
     
+
+
+
 }
 
 
-fn add_student(name:String, level:u8, english_score:u8, maths_score:u8, science_score:u8){
-    let students: Vec<Student> = Vec::new();
-    let student_id:u8 = 0;
+fn get_all_students(students:&mut Vec<Student>){
+    println!("{:#?}", students)
+}
+fn add_student(name:String, level:u8, students:&mut Vec<Student>){
+    let mut student_id:u8 = 0;
     student_id+=1;
+    
+    let result = vec![
+        Courses::English { score: 0, grade: Grades::F },
+        Courses::Maths { score: 0, grade: Grades::F },
+        Courses::Science { score: 0, grade: Grades::F },
+    ];
 
-    let english_grade = Grades::get_grades(english_score);
-    let maths_grade = Grades::get_grades(maths_score);
-    let science_grade = Grades::get_grades(science_score);
-
-    students.push(Student.new(student_id, name, level, result:(Courses::English {score:english_score, grade:english_grade}, Courses::Maths {score:maths_score, grade:maths_grade}, Courses::Science {score:science_score, grade:science_grade})));
+    students.push(Student::new(student_id, name, level,result));
 }
+
+fn update_scores(students: &mut  )
