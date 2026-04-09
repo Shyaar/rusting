@@ -11,9 +11,14 @@ fn main(){
 
     let invalid = musical_instruments.get(100);
 
-    let valid = piano.expect("unreachable instrument");
-    println!("{:?}", valid);
 
-    let invalid = invalid.expect("unreachable instrument");
-    println!("{:?}", invalid);
+    match piano{
+        Option::Some(musical_instrument) => println!("{:?}", musical_instrument),
+        Option::None => println!("No instrument found"),
+    }
+
+    match invalid{
+        Option::Some(musical_instrument) => println!("{:?}", musical_instrument),
+        Option::None => println!("No instrument found"),
+    }
 }
