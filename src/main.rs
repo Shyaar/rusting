@@ -26,10 +26,17 @@ fn main() {
     println!("{:?}", available);
 
     match available{
-        Option::Some(true) => println!("item is Available"),
-        Option::Some(false) => println!("item is not Available"),
-        Option::None => println!("item is not in the system"),
+        Some(true) => println!("item is Available"),
+        Some(false) => println!("item is not Available"),
+        None => println!("item is not in the system"),
     }
+
+    let present = Some(13);
+    let missing:Option<i32> = None;
+
+    println!("{:?}", present.unwrap_or(0));
+    println!("{:?}", missing.unwrap_or(0));
+
 }
 
 fn play(instrument: Option<&String>) {
@@ -42,10 +49,10 @@ fn play(instrument: Option<&String>) {
 
 fn is_in_stock(in_system:bool, in_stock:bool)->Option<bool>{
     if in_system && in_stock{
-        Option::Some(true)
+        Some(true)
     }else if in_system{
-        Option::Some(false)
+        Some(false)
     }else{
-        Option::None
+        None
     }
 }
